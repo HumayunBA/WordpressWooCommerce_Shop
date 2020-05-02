@@ -439,7 +439,7 @@
         },
 
         /**
-         * Add shortcut button for primary menu.
+         * Add shortcut button for .
          */
         'addShortcutForMenu' : function () {
             var primaryMenu = $('.navbar-nav');
