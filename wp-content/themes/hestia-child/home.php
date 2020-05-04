@@ -16,6 +16,7 @@ do_action( 'hestia_before_single_page_wrapper' );
 ?>
 <div class="<?php echo hestia_layout(); ?>">
 	<?php
+
 		
 		
 	$class_to_add = '';
@@ -49,7 +50,7 @@ do_action( 'hestia_before_single_page_wrapper' );
 
 </div>
 <?php endif; 
-get_top_ten();
+
  //echo do_shortcode('[products limit="3" paginate="true" columns="3" orderby="popularity"  ]'); 
 
 ?>
@@ -60,4 +61,6 @@ get_top_ten();
 
 		
 	
-	<?php get_footer(); ?>
+	<?php 
+	 echo do_shortcode('[products_slider slide_to_show="3" limit="6" dots="false"]');
+	get_footer(); ?>
