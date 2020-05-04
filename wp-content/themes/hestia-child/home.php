@@ -30,7 +30,7 @@ do_action( 'hestia_before_single_page_wrapper' );
 <?php if( have_rows('slides') ): ?>
 
 <div class="flexslider">
-<ul class="slides">
+ <ul class="slides">
 
 <?php while( have_rows('slides') ): the_row(); ?>
 
@@ -39,32 +39,25 @@ do_action( 'hestia_before_single_page_wrapper' );
         $image = get_sub_field('image');
 	$imageurl=$image['sizes']['slider'];
 	$title = get_sub_field('title');
+?>
+	    <li>
+		<img src="<?php echo $imageurl;?>" >   
 
-     
-	?>
-	    <li><img src="<?php echo $imageurl?>" alt=<?php echo$title;?>>    </li>
+		</li>
 <?php endwhile; ?>
  </ul>
 
 </div>
-<?php endif; ?>
+<?php endif; 
+get_top_ten();
+ //echo do_shortcode('[products limit="3" paginate="true" columns="3" orderby="popularity"  ]'); 
+
+?>
 
 
 
 
-	<div class="blog-post <?php esc_attr( $class_to_add ); ?>">
-		<div class="container">
-			<?php
-			if ( have_posts() ) :
-				while ( have_posts() ) :
-					the_post();
-					get_template_part( 'template-parts/content', 'page' );
-				endwhile;
-				else :
-					get_template_part( 'template-parts/content', 'none' );
-			endif;
-			
-				?>
-		</div>
-	</div>
+
+		
+	
 	<?php get_footer(); ?>

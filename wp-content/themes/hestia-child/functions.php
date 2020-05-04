@@ -37,6 +37,68 @@ function enqueue_parent_styles() {
 
 
 
-   add_image_size('slider',1200,700,true)
+   add_image_size('slider',1200,700,true);
+
+
+   function get_top_ten(){
+      $query = new WP_Query( array(
+          'posts_per_page' => 2,
+          'post_type' => 'product',
+          'post_status' => 'publish',
+          'meta_key' => 'total_sales',
+          'orderby' => 'meta_value_num',
+          'order' => 'DESC',
+      ) );
+ 
+      if($query->have_posts()) :?>
+      
+      <?php do_action( 'woocommerce_before_shop_loop' ); ?>
+
+       <?php woocommerce_product_loop_start(); ?>
+      
+         <?php while($query->have_posts()) : $query->the_post();?>
+          
+         <?php wc_get_template_part( 'content', 'product' ); ?>
+            
+         <?php endwhile;
+          wp_reset_postdata();
+      endif;
+      woocommerce_product_loop_end();
+
+			 do_action( 'woocommerce_after_shop_loop' ); 
+
+  }
+
+
+
+
+
+
+  // Our custom post type function
+function create_posttype() {
+ 
+    register_post_type( 'locations',
+    // CPT Options
+        array(
+            'labels' => array(
+                'name' => __( 'Locations' ),
+                'singular_name' => __( 'Location' )
+            ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'locations'),
+            'show_in_rest' => true,
+ 
+        )
+    );
+}
+// Hooking up our function to theme setup
+add_action( 'init', 'create_posttype' );
+
+
+function my_acf_init() {
+   acf_update_setting('google_api_key', 'AIzaSyBrQhjO9eERQWFLplBkmJsAH2qnV5DkqfM');
+}
+add_action('acf/init', 'my_acf_init');
 ?>
 
