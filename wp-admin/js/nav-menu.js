@@ -494,7 +494,7 @@
 				itemPosition = primaryItems.index( menuItem ) + 1,
 				totalMenuItems = primaryItems.length,
 
-				// String together help text for  items.
+				// String together help text for primary menu items.
 				title = menus.menuFocus.replace( '%1$s', itemName ).replace( '%2$d', itemPosition ).replace( '%3$d', totalMenuItems );
 			} else {
 				parentItem = menuItem.prevAll( '.menu-item-depth-' + parseInt( depth - 1, 10 ) ).first(),
