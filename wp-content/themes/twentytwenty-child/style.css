@@ -1,0 +1,11 @@
+/*
+Theme Name: Twentytwenty Child
+Template: Twentytwenty
+*/
+
+@import url("../twentytwenty/style.css");
+
+.woocommerce-product-gallery__image{
+    height: 250;
+    width: 200;
+}
